@@ -114,10 +114,6 @@ class Game extends React.Component {
         });
     }
     jumpTo(i) {
-        console.log(i)
-        if(i===0){
-            this.initCanvas()
-        }
         this.setState({
             stepNumber: i,
             xIsNext: (i % 2) === 0 //如果是偶数下一位就是奇数 true 对应X
@@ -127,7 +123,6 @@ class Game extends React.Component {
         this.render(type)
     }
     historyShow(history) {
-        console.log(history)
         return history.map((item, index) => {
             const desc = index ? `Go to move #${item.index}` : 'Go to game start'
             const active = this.state.stepNumber === item.index ? "active" : ""
@@ -143,18 +138,16 @@ class Game extends React.Component {
         if (!b) return
         var c = document.querySelector('#mycanvas');
         var ctx = c.getContext("2d");
-        ctx.clearRect(0, 0, 105, 105);
-        ctx.rect(0, 0, 105, 105);
+        ctx.rect(0, 0, 102, 102);
         ctx.beginPath();
         ctx.lineWidth = "1";
         ctx.strokeStyle = "red"; // 红色路径
         let Val = b - a
-        console.log(Val)
         switch (Val) {
             case 1:
                 switch (a) {
                     case 0:
-                       
+                        console.log(a)
                         ctx.moveTo(0, 17);
                         ctx.lineTo(105, 17);
                         break;
